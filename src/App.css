@@ -1,44 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
+body {
+  margin: 0;
+}
+
 #root {
   text-align: center;
   width: 100%;
 }
 
 .form-wrapper {
-  background-color: #f7f8fa;
+  background: linear-gradient(135deg, #f7f8fa 0%, #eef2ff 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'DM Sans', sans-serif;
-  padding: 1rem;
 }
 
 .form-container {
   width: 100%;
-  max-width: 42rem;
+  max-width: 48rem;
   background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 3rem;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-2px);
 }
 
 .form-branding {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .form-logo {
-  max-width: 150px;
-  margin: 0 auto 1rem;
+  max-width: 300px;
+  margin: 0 auto 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.form-logo:hover {
+  transform: scale(1.05);
 }
 
 .form-author {
   color: #6b7280;
   font-size: 0.875rem;
+  font-weight: 500;
 }
-
 
 .progress-bar {
   background: linear-gradient(90deg, #F94D23, #FD792A);
@@ -50,20 +63,24 @@
 .form-step {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   text-align: left;
+  padding: 0 1rem;
 }
 
 .form-step h2 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: #1f2937;
   text-align: center;
+  margin-bottom: 0.5rem;
 }
 
 .form-step p {
   color: #4b5563;
   text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .form-step label {
@@ -71,25 +88,31 @@
   font-size: 0.875rem;
   font-weight: 500;
   color: #374151;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .form-step input,
 .form-step select {
   width: 100%;
-  padding: 0.6rem 0.75rem;
+  padding: 0.75rem 1rem;
   background-color: white;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.form-step input:hover,
+.form-step select:hover {
+  border-color: #d1d5db;
 }
 
 .form-step input:focus,
 .form-step select:focus {
   outline: none;
   border-color: #F94D23;
-  box-shadow: 0 0 0 1px #F94D23;
+  box-shadow: 0 0 0 3px rgba(249, 77, 35, 0.1);
 }
 
 .form-step .error-message {
@@ -109,36 +132,41 @@
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: 3rem;
+  gap: 1rem;
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 2rem;
   font-size: 1rem;
-  font-weight: 700;
-  border-radius: 9999px;
+  font-weight: 600;
+  border-radius: 0.75rem;
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  min-width: 120px;
 }
 
 .btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+  transform: none !important;
 }
 
 .btn-secondary {
   color: #374151;
-  background-color: #e5e7eb;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
 }
 
 .btn-secondary:hover {
-  background-color: #d1d5db;
+  background-color: #e5e7eb;
+  transform: translateY(-1px);
 }
 
 .btn-primary {
   color: white;
-  background: linear-gradient(90deg, #F94D23, #FD792A);
+  background: linear-gradient(135deg, #F94D23 0%, #FD792A 100%);
   margin-left: auto;
 }
 
@@ -149,8 +177,9 @@
 
 .btn-submit {
   color: white;
-  background: linear-gradient(90deg, #F94D23, #FD792A);
+  background: linear-gradient(135deg, #F94D23 0%, #FD792A 100%);
   margin-left: auto;
+  padding: 1rem 2.5rem;
 }
 
 .btn-submit:hover {
@@ -161,4 +190,23 @@
 .body-busy-cursor,
 .body-busy-cursor * {
   cursor: wait !important;
+}
+
+@media (max-width: 640px) {
+  .form-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .button-container {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  
+  .btn-primary,
+  .btn-submit {
+    margin-left: 0;
+  }
 }

@@ -1,8 +1,11 @@
-import { useEffect, useState, type JSX } from 'react'
+import { useEffect, useState, type FormEvent, type JSX } from 'react'
 import type { AppFormData, FormErrors } from './models/app-models';
 import { BasicInfoStep } from './components/BasicInfoStep/BasicInfoStep';
 import { ProgressBar } from './components/ProgressBar/ProgressBar';
 import { SuccessMessage } from './components/SuccessMessage/SuccessMessage';
+import { DetailsStep } from './components/DetailsStep/DetailsStep';
+import { AccountStep } from './components/AccountStep/AccountStep';
+import { ConfirmationStep } from './components/ConfirmationStep/ConfirmationStep';
 import './App.css'
 import payoneerLogo from './assets/Payoneer_logo.svg';
 
@@ -62,7 +65,7 @@ function App() {
       setStep(s => s - 1);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (validateStep()) {
       setIsSubmitting(true);
@@ -77,6 +80,9 @@ function App() {
   const renderStep = (): JSX.Element | null => {
     switch (step) {
       case 1: return <BasicInfoStep data={formData} setData={setFormData} errors={errors} />;
+      case 2: return <DetailsStep data={formData} setData={setFormData} errors={errors} />;
+      case 3: return <AccountStep data={formData} setData={setFormData} errors={errors} />;
+      case 4: return <ConfirmationStep data={formData} />;
       default: return null;
     }
   };

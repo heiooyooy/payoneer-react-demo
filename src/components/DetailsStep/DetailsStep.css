@@ -1,0 +1,24 @@
+.avatar-upload {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.25rem;
+}
+
+
+
+.avatar-placeholder {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 9999px;
+    background-color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+}
+
+.avatar-placeholder svg {
+    height: 2rem;
+    width: 2rem;
+}

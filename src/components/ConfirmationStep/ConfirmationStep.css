@@ -1,0 +1,23 @@
+.summary-avatar {
+    display: flex;
+    justify-content: center;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary-item span:first-child {
+    font-weight: 500;
+}
+
+.confirmation-summary {
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}

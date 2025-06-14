@@ -10,7 +10,6 @@ export const BasicInfoStep: FC<StepProps> = ({ data, setData, errors }) => {
     return (
         <div className="form-step">
             <h2>Basic Information</h2>
-            <p>Let's start with the basics.</p>
             <div>
                 <label htmlFor="firstName">First Name</label>
                 <input

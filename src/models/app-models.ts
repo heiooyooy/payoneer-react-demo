@@ -18,3 +18,16 @@ export interface StepProps {
     setData: Dispatch<SetStateAction<AppFormData>>;
     errors: FormErrors;
 }
+
+export interface ProgressBarProps {
+    currentStep: number;
+    totalSteps: number;
+}
+
+export interface ConfirmationStepProps {
+    data: AppFormData;
+}
+
+export interface SuccessMessageProps {
+    name: string;
+}
