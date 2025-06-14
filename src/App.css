@@ -115,11 +115,15 @@ body {
   box-shadow: 0 0 0 3px rgba(249, 77, 35, 0.1);
 }
 
-.form-step .error-message {
+.error-message {
   color: #ef4444;
   font-size: 0.75rem;
   margin-top: 0.25rem;
   text-align: left;
+}
+
+.submission-error {
+  color: #ef4444;
 }
 
 .avatar-preview {
@@ -196,15 +200,15 @@ body {
   .form-container {
     padding: 2rem 1.5rem;
   }
-  
+
   .button-container {
     flex-direction: column;
   }
-  
+
   .btn {
     width: 100%;
   }
-  
+
   .btn-primary,
   .btn-submit {
     margin-left: 0;

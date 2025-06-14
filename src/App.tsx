@@ -8,6 +8,7 @@ import { AccountStep } from './components/AccountStep/AccountStep';
 import { ConfirmationStep } from './components/ConfirmationStep/ConfirmationStep';
 import './App.css'
 import payoneerLogo from './assets/Payoneer_logo.svg';
+import { AuthService } from './services/AuthService';
 
 function App() {
   const [step, setStep] = useState<number>(1);
@@ -24,6 +25,7 @@ function App() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
   const totalSteps = 4;
 
   useEffect(() => {
@@ -37,7 +39,7 @@ function App() {
       document.body.classList.remove('body-busy-cursor');
     };
   }, [isSubmitting]);
-  
+
   const validateStep = (): boolean => {
     const newErrors: FormErrors = {};
     if (step === 1) {
@@ -65,15 +67,26 @@ function App() {
       setStep(s => s - 1);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateStep()) {
-      setIsSubmitting(true);
-      console.log("Form data submitted:", formData);
-      setTimeout(() => {
+    if (!validateStep()) return;
+
+    setIsSubmitting(true);
+    setSubmissionError(null);
+
+    try {
+      const result = await AuthService.submitRegistration(formData);
+
+      if (result.success) {
         setIsSubmitted(true);
-        setIsSubmitting(false);
-      }, 1000);
+      } else {
+        setSubmissionError(result.error || 'An unknown error occurred.');
+      }
+    } catch (error) {
+      setSubmissionError('A critical error occurred. Please try again later.');
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -105,6 +118,9 @@ function App() {
               <div style={{ margin: '2rem 0' }}>
                 {renderStep()}
               </div>
+              {submissionError && (
+                <p className="submission-error">{submissionError}</p>
+              )}
               <div className="button-container">
                 {step > 1 && (
                   <button type="button" onClick={prevStep} className="btn btn-secondary">Back</button>
