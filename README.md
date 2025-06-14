@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# Multi-Step Registration Form Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This demo was built by **Dejun (Darren) Tu ** for Payoneer interview only.
 
-Currently, two official plugins are available:
+## Project Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To set up and run this project on your local machine, please follow these steps.
 
-## Expanding the ESLint configuration
+**1. Clone the Repository**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+First, clone the project repository from your source control to your local machine.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+git clone git@github.com:heiooyooy/payoneer-react-demo.git
+cd payoneer-react-demo
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**2. Install Dependencies**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This project uses `npm` for package management. Run the following command to install all the necessary project dependencies listed in `package.json`.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+npm install
+```
+
+This will install React, Vite, Vitest, TypeScript, and all testing libraries.
+
+## How to Run the Application
+
+Once the dependencies are installed, you can start the local development server.
+
+**Start the Development Server**
+
+Run the following command in your terminal:
+
+```
+npm run dev
+```
+
+This will start the Vite development server, typically on `http://localhost:5173`. You can now open this URL in your web browser to view and interact with the registration form. The server supports Hot Module Replacement (HMR), so any changes you make to the source code will be reflected in the browser instantly without a full page reload.
+
+## How to Run the Tests
+
+The project is configured with a complete test suite using Vitest and React Testing Library.
+
+**Run** All Tests
+
+To execute the entire suite of unit and integration tests in watch mode, run:
+
+```
+npm test
+```
+
+This command will start the Vitest test runner. It will automatically re-run the tests whenever you save a change to a component or a test file.
+
+**Run** Tests with Coverage Report
+
+To run all tests once and generate a report showing test coverage, use the following command:
+
+```
+npm run coverage
+```
+
+After the tests run, a `coverage` directory will be created in your project root. You can open the `index.html` file inside that directory to view a detailed, line-by-line report of which parts of your code are covered by tests.
