@@ -115,7 +115,7 @@ body {
   box-shadow: 0 0 0 3px rgba(249, 77, 35, 0.1);
 }
 
-.error-message {
+.form-step .error-message {
   color: #ef4444;
   font-size: 0.75rem;
   margin-top: 0.25rem;
